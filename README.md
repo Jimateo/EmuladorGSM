@@ -28,17 +28,19 @@ This simulation illustrates how a mobile device authenticates with an antenna us
 To install PyCryptodome, run:
 ```bash
 pip install pycryptodome
+```
 
-Code Overview
+## **Code Overview**
 Classes
-Movil
 
+- Movil:
 __init__(self, IMSI, Ki): Initializes the mobile with IMSI and Ki.
 set_RAND(self, RAND): Sets the RAND value.
 a3_algorithm(self, Ki, RAND): Runs the A3 algorithm to compute SRES.
 a8_algorithm(self, Ki, RAND): Runs the A8 algorithm to compute Kc.
 ENC(self): Encrypts a message using Kc.
-Antena
+
+- Antena:
 
 __init__(self): Initializes the antenna.
 get_IMSI(self, IMSI): Sets the IMSI value.
@@ -47,7 +49,8 @@ set_parameters(self, RAND, SRES, Kc): Sets RAND, SRES, and Kc.
 validate_authentication(self): Validates if SRES matches SRES_.
 read_msg(self, msg): Reads an encrypted message.
 DEC(self): Decrypts a message using Kc.
-Operador
+
+- Operador:
 
 __init__(self): Initializes the operator.
 get_KI(self, IMSI): Retrieves Ki based on IMSI.
@@ -55,13 +58,15 @@ generate_RAND(self): Generates a random RAND value.
 a3_algorithm(self): Runs the A3 algorithm to compute SRES.
 a8_algorithm(self): Runs the A8 algorithm to compute Kc.
 get_parameters(self, IMSI): Returns IMSI, RAND, SRES, and Kc.
-Main Process
+
+
+## **Main Process**
 The main script simulates the authentication process:
 
-Mobile sends IMSI to Antenna.
-Antenna requests Ki and RAND from Operator.
-Operator generates RAND and computes SRES and Kc using A3 and A8 algorithms.
-Parameters are sent back to Antenna.
-Mobile receives RAND from Antenna, computes SRES using A3 algorithm, and sends it back to Antenna.
-Antenna validates the SRES, and if correct, proceeds to encrypt a message using Kc.
-Mobile encrypts a message, Antenna decrypts it, and the decrypted message is displayed.
+1º Mobile sends IMSI to Antenna.
+2º Antenna requests Ki and RAND from Operator.
+3º Operator generates RAND and computes SRES and Kc using A3 and A8 algorithms.
+4º Parameters are sent back to Antenna.
+5º Mobile receives RAND from Antenna, computes SRES using A3 algorithm, and sends it back to Antenna.
+6º Antenna validates the SRES, and if correct, proceeds to encrypt a message using Kc.
+7º Mobile encrypts a message, Antenna decrypts it, and the decrypted message is displayed.
